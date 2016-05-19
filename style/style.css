@@ -1,0 +1,29 @@
+.search-bar {
+	margin: 20px;
+	text-align: center;
+}
+
+.search-bar input {
+	width: 75%;
+}
+
+.minion-item {
+	margin: 4px;
+	padding: 2px;
+	max-height: 150px;
+	align-content: center;
+	text-align: center;
+	cursor: pointer;
+	min-width: 200px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.minion-selected {
+	opacity: 0.5;
+	cursor: auto;
+}
