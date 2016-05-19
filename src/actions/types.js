@@ -1,1 +1,2 @@
 export const SEARCH_ACTION = 'SEARCH_ACTION';
+export const CLICK_ACTION = 'CLICK_ACTION';

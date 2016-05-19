@@ -1,4 +1,4 @@
-import { SEARCH_ACTION } from './types';
+import { SEARCH_ACTION, CLICK_ACTION } from './types';
 import minionsJSON from '../resources/minions';
 
 export function searchMinion(term) {
@@ -6,6 +6,13 @@ export function searchMinion(term) {
 	return {
 		type: SEARCH_ACTION,
 		payload: getMinionListByTerm(term)
+	}
+}
+
+export function selectMinion(minion) {
+	return {
+		type: CLICK_ACTION,
+		payload: minion
 	}
 }
 

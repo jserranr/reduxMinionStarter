@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MinionItem from '../components/minion_item';
+import MinionItem from '../containers/minion_item';
 import { connect } from 'react-redux';
 
 class MinionList extends Component {
