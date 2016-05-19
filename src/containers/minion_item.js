@@ -7,16 +7,34 @@ class MinionItem extends Component {
 
 	constructor(props) {
 		super(props);
+
+		this.state = { selected: this.selected() };
 	}
 
 	onMinionSelect(event) {
-		this.props.selectMinion(this.props.minion);
+		if (!this.state.selected) {
+			this.setState({ selected: true });
+			this.props.selectMinion(this.props.minion);
+		}
+	}
+
+	selectedClass() {
+		return this.selected() ? 'minion-selected': '';
+	}
+
+	selected() {
+		for (let i=0; i<this.props.minionSelectedList.length; i++) {
+			if (this.props.minionSelectedList[i].id == this.props.minion.id) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	render() {
 		return (
 			<div 
-				className="col-md-3 minion-item"
+				className={`col-md-3 minion-item ${this.selectedClass()}`}
 				key={this.props.minion.id}
 				onClick={(event) => {this.onMinionSelect(event)} }>
 				<img className="media-object" src={`src/resources/img/${this.props.minion.imgName}`} />
@@ -26,8 +44,14 @@ class MinionItem extends Component {
 	}
 }
 
+function mapStateToProps(state) {
+	return {
+		minionSelectedList: state.minionSelect
+	}
+}
+
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ selectMinion }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(MinionItem);
+export default connect(mapStateToProps, mapDispatchToProps)(MinionItem);
