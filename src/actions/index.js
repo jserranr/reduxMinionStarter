@@ -1,4 +1,13 @@
+import { SEARCH_ACTION } from './types';
 import minionsJSON from '../resources/minions';
+
+export function searchMinion(term) {
+
+	return {
+		type: SEARCH_ACTION,
+		payload: getMinionListByTerm(term)
+	}
+}
 
 function getMinionListByTerm(term) {
 	const termLowerCase = term.toLowerCase();

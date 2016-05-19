@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { searchMinion } from '../actions/index';
 
 class SearchBar extends Component {
 
@@ -23,8 +26,13 @@ class SearchBar extends Component {
 	}
 
 	onInputChange(term) {
+		this.props.searchMinion(term);
 		this.setState({ term });
 	}
 }
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ searchMinion }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
